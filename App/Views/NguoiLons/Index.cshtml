@@ -1,0 +1,71 @@
+﻿@model IEnumerable<QLTV.Models.NguoiLon>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.sonha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.duong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dienthoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.han_sd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocGia.ho)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sonha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.duong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dienthoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.han_sd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocGia.ho)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ma_docgia }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ma_docgia }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ma_docgia })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

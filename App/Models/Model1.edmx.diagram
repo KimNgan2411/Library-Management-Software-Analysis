@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e604fa6aa25c43eb96ef445065e58ab9" Name="Diagram1">
+        <EntityTypeShape EntityType="qltvModel.CuonSach" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qltvModel.DangKy" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qltvModel.DauSach" Width="1.5" PointX="1.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="qltvModel.DocGia" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="qltvModel.Muon" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qltvModel.NguoiLon" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="qltvModel.QuanLy" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qltvModel.QuaTrinhMuon" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="qltvModel.TuaSach" Width="1.5" PointX="1.5" PointY="20.75" IsExpanded="true" />
+        <AssociationConnector Association="qltvModel.FK_cuonsach_dausach" ManuallyRouted="false" />
+        <AssociationConnector Association="qltvModel.FK_muon_cuonsach" ManuallyRouted="false" />
+        <AssociationConnector Association="qltvModel.FK_QuaTrinhMuon_cuonsach" ManuallyRouted="false" />
+        <AssociationConnector Association="qltvModel.FK_dangky_dausach" ManuallyRouted="false" />
+        <AssociationConnector Association="qltvModel.FK_dangky_docgia" ManuallyRouted="false" />
+        <AssociationConnector Association="qltvModel.FK_dausach_tuasach" ManuallyRouted="false" />
+        <AssociationConnector Association="qltvModel.FK_nguoilon_docgia" ManuallyRouted="false" />
+        <AssociationConnector Association="qltvModel.fkMuon_DocGia" ManuallyRouted="false" />
+        <AssociationConnector Association="qltvModel.fkQuaTrinhMuon_DocGia" ManuallyRouted="false" />
+        <AssociationConnector Association="qltvModel.TreEm" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

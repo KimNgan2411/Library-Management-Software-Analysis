@@ -1,0 +1,74 @@
+﻿@model QLTV.Models.NguoiLon
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>NguoiLon</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.sonha)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sonha)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.duong)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.duong)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.quan)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.quan)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.dienthoai)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.dienthoai)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.han_sd)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.han_sd)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DocGia.ho)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DocGia.ho)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ma_docgia }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

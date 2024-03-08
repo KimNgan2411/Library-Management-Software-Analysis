@@ -1,0 +1,87 @@
+﻿@model QLTV.Models.QuanLy
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Kodinger">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Đăng ký | TNC</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="~/Content/assets/css/my-login.css" rel="stylesheet"
+</head>
+
+<body class="my-login-page">
+    <section class="h-100">
+        @using (Html.BeginForm("DangKy", "QuanLies", FormMethod.Post, new { entype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="container h-100">
+                <div class="row justify-content-md-center h-100">
+                    <div class="card-wrapper">
+                        <a href="@Url.Action("Index","Home")">
+                            <div class="brand">
+                                <img src="~/Content/assets/imgs/logo.svg" alt="logo">
+                            </div>
+                        </a>
+                        <div class="card fat">
+                            <div class="card-body">
+                                <h4 class="card-title">Đăng ký</h4>
+                                <form method="POST" class="my-login-validation" novalidate="">
+                                    <div class="form-group">
+                                        <label for="ho">Tên đăng nhập</label>
+                                        @Html.TextBoxFor(model => model.taikhoan, new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">
+                                            Mật khẩu
+                                        </label>
+                                        @Html.PasswordFor(model => model.matkhau, new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Nhập lại mật khẩu</label>
+                                        @Html.PasswordFor(model => model.nhaplaimatkhau, new { @class = "form-control" })
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="custom-checkbox custom-control">
+                                            <input type="checkbox" name="remember" id="dieukhoan" class="custom-control-input">
+                                            <label for="dieukhoan" class="custom-control-label">Tôi chấp nhận <a href="#">điều khoản và sử dụng</a></label>
+                                        </div>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.nhaplaimatkhau)
+                                    <p class="field-validation-error">@ViewBag.LoiDangKy</p>
+                                    <div class="form-group m-0">
+                                        <button type="submit" class="btn btn-primary btn-block" value="Register">
+                                            Đăng ký
+                                        </button>
+                                    </div>
+                                    <div class="mt-4 text-center">
+                                        Bạn đã có tài khoản? <a href="@Url.Action("Index","QuanLies")">Đăng nhập</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <p class="mb-0">
+                                Create by TT &copy;
+                                <script>document.write(new Date().getFullYear())</script>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/my-login.js"></script>
+</body>
+</html>

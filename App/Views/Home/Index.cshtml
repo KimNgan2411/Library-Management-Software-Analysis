@@ -1,0 +1,98 @@
+﻿@model IEnumerable<QLTV.Models.TuaSach>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- page header -->
+<header id="home" class="header">
+    <div class="overlay"></div>
+    <div class="header-content container">
+        <h1 class="header-title">
+            <span class="up">Thư viện</span>
+            <span class="down">HUFLIT,</span>
+        </h1>
+        <p class="header-subtitle">CHÀO MỪNG BẠN!</p>
+        <form action="#about"> <button class="btn btn-primary">Tìm Hiểu</button> </form>
+    </div>
+</header><!-- end of page header -->
+<!-- about section -->
+<section class="section pt-0" id="about">
+    <!-- container -->
+    <div class="container text-center">
+        <!-- about wrapper -->
+        <div class="about">
+            <div class="about-img-holder">
+                <img src="~/Content/assets/imgs/undraw_react_re_g3ui.svg" class="about-img" alt="">
+            </div>
+            <div class="about-caption">
+                <p class="section-subtitle">Giới Thiệu Chung</p>
+                <h2 class="section-title mb-3">Quá trình hình thành thư viện HUFLIT</h2>
+                <p>
+                    Thư viện Trường Đại học Ngoại ngữ – Tin học TP.HCM  - HUFLIT - được thành lập cùng với sự ra đời của trường. Thư viện có nhiệm vụ tham mưu cho Hiệu trưởng công tác quản lý thư viện; tổ chức thu thập, lưu trữ, bảo quản và khai thác tốt nguồn tài liệu phục vụ cho việc giảng dạy, nghiên cứu học tập của cán bộ, giảng viên, nhân viên và sinh viên của trường.
+                    <br>Để chuẩn bị cho việc mở chương trình đào tạo sau đại học trong tương lai, thư viện đã thành lập kho luận văn, luận án sau đại học, thu thập các luận văn, luận án sau đại học của các Cán bộ, Giảng viên trong trường. Kho khóa luận tốt nghiệp và các luận án tại thư viện hiện có 949 nhan đề ứng với 1128 quyển. Ngoài việc tra cứu khóa luận trên máy, thư viện còn in danh mục các khóa luận tập trung theo từng chuyên ngành để giới thiệu cho sinh viên có nhu cầu tham khảo khi làm luận văn tốt nghiệp.
+                </p>
+            </div>
+        </div><!-- end of about wrapper -->
+    </div><!-- end of container -->
+</section> <!-- end of about section -->
+<!-- product section -->
+<section class="section" id="product">
+    <div class="container text-center">
+        <div class="product">
+            <p class="section-subtitle">Bạn cần mượn sách?</p>
+            <h6 class="section-title mb-6">Mượn sách</h6>
+            <!-- tables -->
+            <h3 class="components-section-title">Kết quả tìm kiếm</h3>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tên sách</th>
+                        <th scope="col">Tác giả</th>
+                        <th scope="col">Tóm Tắt</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@Html.DisplayFor(modelItem => item.ma_tuasach)</th>
+                            <td>@Html.DisplayFor(modelItem => item.TuaSach1)</td>
+                            <td>@Html.DisplayFor(modelItem => item.tacgia)</td>
+                            <td>@Html.DisplayFor(modelItem => item.tomtat)</td>
+                            <td><a href="/MuonSach/AddToCart/@item.ma_tuasach" class="btn btn-primary" style="float:right"> Mượn </a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <!-- end of tables -->
+        </div>
+    </div><!-- end of container -->
+</section> <!-- end of product section -->
+<!-- contact section -->
+<section class="section" id="contact">
+    <div class="container text-center">
+        <p class="section-subtitle">Bạn muốn mượn thêm sách?</p>
+        <h6 class="section-title mb-5">Đặt sách</h6>
+        <!-- contact form -->
+        <form action="" class="contact-form col-md-10 col-lg-8 m-auto">
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <input type="text" size="50" class="form-control" placeholder="Tên của bạn" required>
+                </div>
+                <div class="form-group col-sm-6">
+                    <input type="email" class="form-control" placeholder="Email của bạn" requried>
+                </div>
+                <div class="form-group col-sm-12">
+                    <textarea name="comment" id="comment" rows="6" class="form-control" placeholder="Sách bạn muốn đặt" requried></textarea>
+                </div>
+                <div class="form-group col-sm-12 mt-3">
+                    <input type="submit" value="Gửi" class="btn btn-outline-primary rounded">
+                </div>
+            </div>
+        </form><!-- end of contact form -->
+    </div><!-- end of container -->
+</section><!-- end of contact section -->

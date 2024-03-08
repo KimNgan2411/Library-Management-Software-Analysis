@@ -1,0 +1,186 @@
+﻿@model QLTV.Models.DauSach
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>DauSach</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.isbn, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.isbn, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.isbn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ma_tuasach, "ma_tuasach", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ma_tuasach", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ma_tuasach, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ngonngu, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ngonngu, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ngonngu, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.bia, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.bia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.bia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.trangthai, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.trangthai, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <link rel="shortcut icon" type="image/png" href="~/Content/assets/icon/favicon.png" />
+    <title>Quản lý độc giả | TNC</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="~/Content/assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Steller  -->
+    <link rel="stylesheet" href="~/Content/assets/css/meyawo.css">
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <!-- Page Header -->
+    <header class="header header-mini">
+        <div class="header-title">Quản lý đầu sách</div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Quản lý đầu sách</li>
+                <li class="breadcrumb-item"><a href="index.html"><a href="@Url.Action("Index","TuaSaches")">Quản lý tựa sách</a></li>
+                <li class="breadcrumb-item"><a href="index.html"><a href="@Url.Action("Index","DocGias")">Quản lý độc giả</a></li>
+            </ol>
+        </nav>
+    </header> <!-- End Of Page Header -->
+    <!-- main content -->
+    <div class="container">
+        <!-- Inputs -->
+        <hr>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <h6 class="section-secondary-title">ISBN</h6>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.isbn, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.isbn, "", new { @class = "text-danger" })
+                    </div>
+                    <h6 class="section-secondary-title">Tên sách</h6>
+                    <div class="form-group">
+                        @Html.DropDownList("ma_tuasach", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ma_tuasach, "", new { @class = "text-danger" })
+                    </div>
+                    <h6 class="section-secondary-title">Ngôn ngữ</h6>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.ngonngu, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ngonngu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+
+                    <h6 class="section-secondary-title">Bìa</h6>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.bia, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.bia, "", new { @class = "text-danger" })
+                    </div>
+                    <h6 class="section-secondary-title">Trạng thái/h6>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.trangthai, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div> <!-- end of inputs -->
+
+            <div class="form-group col-sm-12 mt-3 text-center">
+
+                <button type="submit" value="Create" class="btn btn-primary">Thêm</button>
+            </div>
+        }
+
+
+        <div style="text-align:center">
+            @Html.ActionLink("Quay về danh sách", "Index")
+        </div>
+
+        <!-- footer -->
+        <div class="container mt-5">
+            <footer class="footer">
+                <p class="mb-0">
+                    Create by TT &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                </p>
+                <div class="social-links text-right m-auto ml-sm-auto">
+                    <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
+                    <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
+                    <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
+                </div>
+            </footer>
+        </div> <!-- end of page footer -->
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿@model QLTV.Models.DauSach
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>DauSach</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ngonngu)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ngonngu)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.bia)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.bia)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.trangthai)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.trangthai)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TuaSach.TuaSach1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TuaSach.TuaSach1)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.isbn }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

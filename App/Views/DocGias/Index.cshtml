@@ -1,0 +1,111 @@
+﻿@model IEnumerable<QLTV.Models.DocGia>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <link rel="shortcut icon" type="image/png" href="~/Content/assets/icon/favicon.png" />
+    <title>Quản lý độc giả | TNC</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="~/Content/assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Steller  -->
+    <link rel="stylesheet" href="~/Content/assets/css/meyawo.css">
+</head>
+<body>
+
+    <!-- Page Header -->
+    <header class="header header-mini">
+        <div class="header-title">Quản lý độc giả</div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("QuanLy","Home")">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Quản lý độc giả</li>
+                <li class="breadcrumb-item"><a href="index.html"><a href="@Url.Action("Index","TuaSaches")">Quản lý tựa sách</a></li>
+                <li class="breadcrumb-item"><a href="index.html"><a href="@Url.Action("Index","DauSaches")">Quản lý đầu sách</a></li>
+            </ol>
+        </nav>
+    </header> <!-- End Of Page Header -->
+    <!-- main content -->
+    <div class="container">
+        <!-- Inputs -->
+        <hr>
+
+        <div class="form-group col-sm-12 mt-3 text-center">
+            <a href="@Url.Action("Create","DocGias")">
+                <button class="btn btn-primary">Thêm</button>
+            </a>
+        </div>
+        <!-- devider -->
+        <!-- Alerts -->
+        <h3 class="components-section-title font-weight-normal mt-5">Thông báo</h3>
+        <hr>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            Cập nhật thành công!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <!-- end of alerts -->
+        <!-- tables -->
+        <h3 class="components-section-title">Bảng</h3>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Họ</th>
+                    <th scope="col">Tên lót</th>
+                    <th scope="col">Tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Tài khoản</th>
+                    <th>Mật khẩu</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(modelItem => item.ma_docgia)</th>
+                        <td>@Html.DisplayFor(modelItem => item.ho)</td>
+                        <td>@Html.DisplayFor(modelItem => item.tenlot)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ten)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NgaySinh)</td>
+                        <td>@Html.DisplayFor(modelItem => item.taikhoan)</td>
+                        <td>@Html.DisplayFor(modelItem => item.matkhau)</td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { id = item.ma_docgia }) |
+                            @Html.ActionLink("Chi tiết", "Details", new { id = item.ma_docgia }) |
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.ma_docgia })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <!-- end of tables -->
+        <!-- footer -->
+        <div class="container mt-5">
+            <footer class="footer">
+                <p class="mb-0">
+                    Create by TT &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                </p>
+                <div class="social-links text-right m-auto ml-sm-auto">
+                    <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
+                    <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
+                    <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
+                </div>
+            </footer>
+        </div> <!-- end of page footer -->
+        <!-- core  -->
+        <script src="~/Content/assets/vendors/jquery/jquery-3.4.1.js"></script>
+        <script src="~/Content/assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+</body>
+</html>
+

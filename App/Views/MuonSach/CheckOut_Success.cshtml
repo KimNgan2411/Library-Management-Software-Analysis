@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "CheckOut_Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="background-color: #6972A6">
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+<div style="text-align:center">
+    <h2 style=" padding-top: 20px">Xin chào, @Session["taikhoan"]!</h2>
+    <h2 style="color:red">Bạn đã mượn sách thành công!</h2>
+    <h2>Sách sẽ được giao tới quý độc giả trong 2-3 ngày. </h2>
+    <br />
+    <h2>Hẹn gặp lại quý độc giả!</h2>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary"><span style="color:white">Quay về trang chủ</span></a>
+
+</div>

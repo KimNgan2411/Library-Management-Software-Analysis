@@ -1,0 +1,100 @@
+﻿@model QLTV.Models.TuaSach
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <link rel="shortcut icon" type="image/png" href="~/Content/assets/icon/favicon.png" />
+    <title>Quản lý tựa sách | TNC</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="~/Content/assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Steller  -->
+    <link rel="stylesheet" href="~/Content/assets/css/meyawo.css">
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <!-- Page Header -->
+    <header class="header header-mini">
+        <div class="header-title">Quản lý tựa sách</div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Quản lý tựa sách</li>
+                <li class="breadcrumb-item"><a href="index.html"><a href="@Url.Action("Index","DauSaches")">Quản lý đầu sách</a></li>
+                <li class="breadcrumb-item"><a href="index.html"><a href="@Url.Action("Index","DocGias")">Quản lý độc giả</a></li>
+            </ol>
+        </nav>
+    </header> <!-- End Of Page Header -->
+    <!-- main content -->
+    <div class="container">
+        <!-- Inputs -->
+        <hr>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <h6 class="section-secondary-title">Mã sách</h6>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.ma_tuasach, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ma_tuasach, "", new { @class = "text-danger" })
+                    </div>
+                    <h6 class="section-secondary-title">Tên sách</h6>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.TuaSach1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TuaSach1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h6 class="section-secondary-title">Tác giả</h6>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.tacgia, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tacgia, "", new { @class = "text-danger" })
+                    </div>
+                    <h6 class="section-secondary-title">Tóm tắt</h6>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.tomtat, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tomtat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div> <!-- end of inputs -->
+
+            <div class="form-group col-sm-12 mt-3 text-center">
+
+                <button type="submit" value="Create" class="btn btn-primary">Thêm</button>
+            </div>
+        }
+
+
+        <div style="text-align:center">
+            @Html.ActionLink("Quay về danh sách", "Index")
+        </div>
+
+        <!-- footer -->
+        <div class="container mt-5">
+            <footer class="footer">
+                <p class="mb-0">
+                    Create by TT &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                </p>
+                <div class="social-links text-right m-auto ml-sm-auto">
+                    <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
+                    <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
+                    <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
+                </div>
+            </footer>
+        </div> <!-- end of page footer -->
+</body>
+</html>

@@ -1,0 +1,139 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Thư Viện TNC</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="~/Content/assets/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/assets/css/meyawo.css">
+    <link rel="shortcut icon" type="image/png" href="~/Content/assets/icon/favicon.png" />
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <!-- Page Navbar -->
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="logo" href="@Url.Action("Index","Home")">TNC</a>
+            <ul class="nav">
+                <li class="item">
+                    <a class="link" href="#home">Trang chủ</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#portfolio">Quản lý</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="@Url.Action("Search","Home")">Tìm kiếm</a>
+                </li>
+                @if (Session["taikhoan"] == null)
+                {
+                    <li class="item ml-md-3">
+                        <a href="@Url.Action("Index","DangNhap")" class="btn btn-primary">Đăng nhập</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="item">
+                        <a class="link" href="#">
+                            Xin chào, @Session["taikhoan"]
+                        </a>
+                    </li>
+                    <li class="item ml-md-3">
+                        <a href="@Url.Action("DangXuat","DangNhap")" class="btn btn-primary">Đăng xuất</a>
+                    </li>
+                }
+            </ul>
+            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>
+    </nav><!-- End of Page Navbar -->
+    <!-- page header -->
+
+    <header id="home" class="header">
+        <div class="overlay"></div>
+        <div class="header-content container">
+            <h1 class="header-title">
+                <span class="up">Welcome</span>
+                <span class="down">ADMIN,</span>
+            </h1>
+            <p class="header-subtitle">HUFLIT LIBRARY!</p>
+        </div>
+    </header><!-- end of page header -->
+    <!-- portfolio section -->
+    <section class="section" id="portfolio">
+        <div class="container text-center">
+            <p class="section-subtitle">Công Việc Quản Lý?</p>
+            <h6 class="section-title mb-6">Quản lý</h6>
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="@Url.Action("Index","TuaSaches")" class="portfolio-card">
+                        <img src="~/Content/assets/imgs/undraw_bookshelves_re_lxoy.svg" class="portfolio-card-img" alt="">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>
+                                    Quản lý tựa sách</h5>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="@Url.Action("Index","DauSaches")" class="portfolio-card">
+                        <img class="portfolio-card-img" src="~/Content/assets/imgs/undraw_newspaper_re_syf5.svg" class="img-responsive rounded" alt="">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>
+                                   Quản lý đầu sách</h5>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="@Url.Action("Index","DocGias")" class="portfolio-card">
+                        <img class="portfolio-card-img" src="~/Content/assets/imgs/undraw_sharing_knowledge_03vp.svg" class="img-responsive rounded" alt="">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>
+                                    Quản lý độc giả</h5>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            </div><!-- end of row -->
+        </div><!-- end of container -->
+    </section> <!-- end of portfolio section -->
+    <!-- footer -->
+    <div class="container">
+        <footer class="footer">
+            <p class="mb-0">
+                Create by TT &copy;
+                <script>document.write(new Date().getFullYear())</script>
+            </p>
+            <div class="social-links text-right m-auto ml-sm-auto">
+                <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
+            </div>
+        </footer>
+    </div> <!-- end of page footer -->
+    <!-- core  -->
+    <script src="~/Content/assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="~/Content/assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="~/Content/assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- Meyawo js -->
+    <script src="~/Content/assets/js/meyawo.js"></script>
+
+</body>
+</html>

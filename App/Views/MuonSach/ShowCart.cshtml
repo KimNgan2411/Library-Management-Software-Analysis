@@ -1,0 +1,72 @@
+﻿@model QLTV.Models.MuonSach
+
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="background-color: #6972A6">
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+<br />
+<h2 style="text-align:center">Giỏ sách</h2>
+<a style="text-decoration: none" href="@Url.Action("Index", "Home")"> Quay về trang chủ</a>
+@if (Model != null)
+{
+    <!-- tables -->
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Mã sách</th>
+                <th scope="col">Tên sách</th>
+                <th scope="col">Tác giả</th>
+                <th scope="col">Tóm Tắt</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <th scope="row">@Html.DisplayFor(model => item._product.ma_tuasach)</th>
+                    <td>@Html.DisplayFor(model => item._product.TuaSach1)</td>
+                    <td>@Html.DisplayFor(model => item._product.tacgia)</td>
+                    <td>@Html.DisplayFor(model => item._product.tomtat)</td>
+                    <td>
+                        <a href="RemoveCart/@item._product.ma_tuasach" class="btn btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" align="center">
+                    <br />
+                    @using (Html.BeginForm("CheckOut", "MuonSach"))
+                    {
+                        if (Session["taikhoan"] != null)
+                        {
+                            <input type="submit" value="Mượn ngay" class="btn btn-primary" />
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Index","DangNhap")" class="btn btn-primary">
+                                Vui lòng đăng nhập để mượn sách!
+                            </a>
+                        }
+                    }
+
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <!-- end of tables -->
+}
+
+else
+{
+    <h4>Giỏ hàng rỗng ! Xin mời tiếp tục mua hàng</h4>
+}

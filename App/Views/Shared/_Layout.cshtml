@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Thư Viện TNC</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="~/Content/assets/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/assets/css/meyawo.css">
+    <link rel="shortcut icon" type="image/png" href="~/Content/assets/icon/favicon.png" />
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <!-- Page Navbar -->
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="logo" href="@Url.Action("Index","Home")">TNC</a>
+            <ul class="nav">
+                <li class="item">
+                    <a class="link" href="#home">Trang chủ</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#about">Thông tin</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#product">Mượn sách</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#contact">Đặt sách</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="@Url.Action("Search","Home")">Tìm kiếm</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="@Url.Action("ShowCart","MuonSach")">Giỏ sách @Html.Action("BagCart", "MuonSach")</a>
+                    
+                </li>
+                @if (Session["taikhoan"] == null)
+                {
+                    <li class="item ml-md-3">
+                        <a href="@Url.Action("Index","DangNhap")" class="btn btn-primary">Đăng nhập</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="item">
+                        <a class="link" href="#">
+                            Xin chào, @Session["taikhoan"]
+                        </a>
+                    </li>
+                    <li class="item ml-md-3">
+                        <a href="@Url.Action("DangXuat","DangNhap")" class="btn btn-primary">Đăng xuất</a>
+                    </li>
+                }
+            </ul>
+            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>
+    </nav><!-- End of Page Navbar -->
+    <!-- page header -->
+
+    @RenderBody()
+    
+    <!-- footer -->
+    <div class="container">
+        <footer class="footer">
+            <p class="mb-0">Create by TT &copy;
+            <script>document.write(new Date().getFullYear())</script> </p>
+            <div class="social-links text-right m-auto ml-sm-auto">
+                <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
+            </div>
+        </footer>
+    </div> <!-- end of page footer -->
+    <!-- core  -->
+    <script src="~/Content/assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="~/Content/assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="~/Content/assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- Meyawo js -->
+    <script src="~/Content/assets/js/meyawo.js"></script>
+
+</body>
+</html>

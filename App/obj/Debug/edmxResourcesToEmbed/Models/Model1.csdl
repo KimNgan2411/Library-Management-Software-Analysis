@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="qltvModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CuonSach">
+    <Key>
+      <PropertyRef Name="isbn" />
+      <PropertyRef Name="Ma_CuonSach" />
+    </Key>
+    <Property Name="isbn" Type="Int32" Nullable="false" />
+    <Property Name="Ma_CuonSach" Type="Int16" Nullable="false" />
+    <Property Name="TinhTrang" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="DauSach" Relationship="Self.FK_cuonsach_dausach" FromRole="CuonSach" ToRole="DauSach" />
+    <NavigationProperty Name="Muon" Relationship="Self.FK_muon_cuonsach" FromRole="CuonSach" ToRole="Muon" />
+    <NavigationProperty Name="QuaTrinhMuons" Relationship="Self.FK_QuaTrinhMuon_cuonsach" FromRole="CuonSach" ToRole="QuaTrinhMuon" />
+  </EntityType>
+  <EntityType Name="DangKy">
+    <Key>
+      <PropertyRef Name="isbn" />
+      <PropertyRef Name="ma_docgia" />
+    </Key>
+    <Property Name="isbn" Type="Int32" Nullable="false" />
+    <Property Name="ma_docgia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ngaygio_dk" Type="DateTime" Precision="0" />
+    <Property Name="ghichu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DauSach" Relationship="Self.FK_dangky_dausach" FromRole="DangKy" ToRole="DauSach" />
+    <NavigationProperty Name="DocGia" Relationship="Self.FK_dangky_docgia" FromRole="DangKy" ToRole="DocGia" />
+  </EntityType>
+  <EntityType Name="DauSach">
+    <Key>
+      <PropertyRef Name="isbn" />
+    </Key>
+    <Property Name="isbn" Type="Int32" Nullable="false" />
+    <Property Name="ma_tuasach" Type="Int32" Nullable="false" />
+    <Property Name="ngonngu" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="bia" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="trangthai" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CuonSaches" Relationship="Self.FK_cuonsach_dausach" FromRole="DauSach" ToRole="CuonSach" />
+    <NavigationProperty Name="DangKies" Relationship="Self.FK_dangky_dausach" FromRole="DauSach" ToRole="DangKy" />
+    <NavigationProperty Name="TuaSach" Relationship="Self.FK_dausach_tuasach" FromRole="DauSach" ToRole="TuaSach" />
+  </EntityType>
+  <EntityType Name="DocGia">
+    <Key>
+      <PropertyRef Name="ma_docgia" />
+    </Key>
+    <Property Name="ma_docgia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ho" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tenlot" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="ten" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="taikhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="DangKies" Relationship="Self.FK_dangky_docgia" FromRole="DocGia" ToRole="DangKy" />
+    <NavigationProperty Name="NguoiLon" Relationship="Self.FK_nguoilon_docgia" FromRole="DocGia" ToRole="NguoiLon" />
+    <NavigationProperty Name="Muons" Relationship="Self.fkMuon_DocGia" FromRole="DocGia" ToRole="Muon" />
+    <NavigationProperty Name="QuaTrinhMuons" Relationship="Self.fkQuaTrinhMuon_DocGia" FromRole="DocGia" ToRole="QuaTrinhMuon" />
+    <NavigationProperty Name="NguoiLon1" Relationship="Self.TreEm" FromRole="DocGia" ToRole="NguoiLon" />
+  </EntityType>
+  <EntityType Name="Muon">
+    <Key>
+      <PropertyRef Name="isbn" />
+      <PropertyRef Name="ma_cuonsach" />
+    </Key>
+    <Property Name="isbn" Type="Int32" Nullable="false" />
+    <Property Name="ma_cuonsach" Type="Int16" Nullable="false" />
+    <Property Name="ma_docgia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ngayGio_muon" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ngay_hethan" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="CuonSach" Relationship="Self.FK_muon_cuonsach" FromRole="Muon" ToRole="CuonSach" />
+    <NavigationProperty Name="DocGia" Relationship="Self.fkMuon_DocGia" FromRole="Muon" ToRole="DocGia" />
+  </EntityType>
+  <EntityType Name="NguoiLon">
+    <Key>
+      <PropertyRef Name="ma_docgia" />
+    </Key>
+    <Property Name="ma_docgia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sonha" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="duong" Type="String" MaxLength="63" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="quan" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dienthoai" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="han_sd" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="DocGia" Relationship="Self.FK_nguoilon_docgia" FromRole="NguoiLon" ToRole="DocGia" />
+    <NavigationProperty Name="DocGias" Relationship="Self.TreEm" FromRole="NguoiLon" ToRole="DocGia" />
+  </EntityType>
+  <EntityType Name="QuanLy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="taikhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="QuaTrinhMuon">
+    <Key>
+      <PropertyRef Name="isbn" />
+      <PropertyRef Name="ma_cuonsach" />
+      <PropertyRef Name="ngayGio_muon" />
+    </Key>
+    <Property Name="isbn" Type="Int32" Nullable="false" />
+    <Property Name="ma_cuonsach" Type="Int16" Nullable="false" />
+    <Property Name="ngayGio_muon" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ma_docgia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ngay_hethan" Type="DateTime" Precision="0" />
+    <Property Name="ngayGio_tra" Type="DateTime" Precision="0" />
+    <Property Name="tien_muon" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="tien_datra" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="tien_datcoc" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ghichu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CuonSach" Relationship="Self.FK_QuaTrinhMuon_cuonsach" FromRole="QuaTrinhMuon" ToRole="CuonSach" />
+    <NavigationProperty Name="DocGia" Relationship="Self.fkQuaTrinhMuon_DocGia" FromRole="QuaTrinhMuon" ToRole="DocGia" />
+  </EntityType>
+  <EntityType Name="TuaSach">
+    <Key>
+      <PropertyRef Name="ma_tuasach" />
+    </Key>
+    <Property Name="ma_tuasach" Type="Int32" Nullable="false" />
+    <Property Name="TuaSach1" Type="String" MaxLength="63" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tacgia" Type="String" MaxLength="31" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tomtat" Type="String" MaxLength="222" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DauSaches" Relationship="Self.FK_dausach_tuasach" FromRole="TuaSach" ToRole="DauSach" />
+  </EntityType>
+  <Association Name="FK_cuonsach_dausach">
+    <End Role="DauSach" Type="Self.DauSach" Multiplicity="1" />
+    <End Role="CuonSach" Type="Self.CuonSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DauSach">
+        <PropertyRef Name="isbn" />
+      </Principal>
+      <Dependent Role="CuonSach">
+        <PropertyRef Name="isbn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_muon_cuonsach">
+    <End Role="CuonSach" Type="Self.CuonSach" Multiplicity="1" />
+    <End Role="Muon" Type="Self.Muon" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CuonSach">
+        <PropertyRef Name="isbn" />
+        <PropertyRef Name="Ma_CuonSach" />
+      </Principal>
+      <Dependent Role="Muon">
+        <PropertyRef Name="isbn" />
+        <PropertyRef Name="ma_cuonsach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuaTrinhMuon_cuonsach">
+    <End Role="CuonSach" Type="Self.CuonSach" Multiplicity="1" />
+    <End Role="QuaTrinhMuon" Type="Self.QuaTrinhMuon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CuonSach">
+        <PropertyRef Name="isbn" />
+        <PropertyRef Name="Ma_CuonSach" />
+      </Principal>
+      <Dependent Role="QuaTrinhMuon">
+        <PropertyRef Name="isbn" />
+        <PropertyRef Name="ma_cuonsach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dangky_dausach">
+    <End Role="DauSach" Type="Self.DauSach" Multiplicity="1" />
+    <End Role="DangKy" Type="Self.DangKy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DauSach">
+        <PropertyRef Name="isbn" />
+      </Principal>
+      <Dependent Role="DangKy">
+        <PropertyRef Name="isbn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dangky_docgia">
+    <End Role="DocGia" Type="Self.DocGia" Multiplicity="1" />
+    <End Role="DangKy" Type="Self.DangKy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocGia">
+        <PropertyRef Name="ma_docgia" />
+      </Principal>
+      <Dependent Role="DangKy">
+        <PropertyRef Name="ma_docgia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dausach_tuasach">
+    <End Role="TuaSach" Type="Self.TuaSach" Multiplicity="1" />
+    <End Role="DauSach" Type="Self.DauSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TuaSach">
+        <PropertyRef Name="ma_tuasach" />
+      </Principal>
+      <Dependent Role="DauSach">
+        <PropertyRef Name="ma_tuasach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_nguoilon_docgia">
+    <End Role="DocGia" Type="Self.DocGia" Multiplicity="1" />
+    <End Role="NguoiLon" Type="Self.NguoiLon" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DocGia">
+        <PropertyRef Name="ma_docgia" />
+      </Principal>
+      <Dependent Role="NguoiLon">
+        <PropertyRef Name="ma_docgia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkMuon_DocGia">
+    <End Role="DocGia" Type="Self.DocGia" Multiplicity="1" />
+    <End Role="Muon" Type="Self.Muon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocGia">
+        <PropertyRef Name="ma_docgia" />
+      </Principal>
+      <Dependent Role="Muon">
+        <PropertyRef Name="ma_docgia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkQuaTrinhMuon_DocGia">
+    <End Role="DocGia" Type="Self.DocGia" Multiplicity="1" />
+    <End Role="QuaTrinhMuon" Type="Self.QuaTrinhMuon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocGia">
+        <PropertyRef Name="ma_docgia" />
+      </Principal>
+      <Dependent Role="QuaTrinhMuon">
+        <PropertyRef Name="ma_docgia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TreEm">
+    <End Role="DocGia" Type="Self.DocGia" Multiplicity="*" />
+    <End Role="NguoiLon" Type="Self.NguoiLon" Multiplicity="0..1" />
+  </Association>
+  <EntityContainer Name="qltvEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CuonSaches" EntityType="Self.CuonSach" />
+    <EntitySet Name="DangKies" EntityType="Self.DangKy" />
+    <EntitySet Name="DauSaches" EntityType="Self.DauSach" />
+    <EntitySet Name="DocGias" EntityType="Self.DocGia" />
+    <EntitySet Name="Muons" EntityType="Self.Muon" />
+    <EntitySet Name="NguoiLons" EntityType="Self.NguoiLon" />
+    <EntitySet Name="QuanLies" EntityType="Self.QuanLy" />
+    <EntitySet Name="QuaTrinhMuons" EntityType="Self.QuaTrinhMuon" />
+    <EntitySet Name="TuaSaches" EntityType="Self.TuaSach" />
+    <AssociationSet Name="FK_cuonsach_dausach" Association="Self.FK_cuonsach_dausach">
+      <End Role="DauSach" EntitySet="DauSaches" />
+      <End Role="CuonSach" EntitySet="CuonSaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_muon_cuonsach" Association="Self.FK_muon_cuonsach">
+      <End Role="CuonSach" EntitySet="CuonSaches" />
+      <End Role="Muon" EntitySet="Muons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuaTrinhMuon_cuonsach" Association="Self.FK_QuaTrinhMuon_cuonsach">
+      <End Role="CuonSach" EntitySet="CuonSaches" />
+      <End Role="QuaTrinhMuon" EntitySet="QuaTrinhMuons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dangky_dausach" Association="Self.FK_dangky_dausach">
+      <End Role="DauSach" EntitySet="DauSaches" />
+      <End Role="DangKy" EntitySet="DangKies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dangky_docgia" Association="Self.FK_dangky_docgia">
+      <End Role="DocGia" EntitySet="DocGias" />
+      <End Role="DangKy" EntitySet="DangKies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dausach_tuasach" Association="Self.FK_dausach_tuasach">
+      <End Role="TuaSach" EntitySet="TuaSaches" />
+      <End Role="DauSach" EntitySet="DauSaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_nguoilon_docgia" Association="Self.FK_nguoilon_docgia">
+      <End Role="DocGia" EntitySet="DocGias" />
+      <End Role="NguoiLon" EntitySet="NguoiLons" />
+    </AssociationSet>
+    <AssociationSet Name="fkMuon_DocGia" Association="Self.fkMuon_DocGia">
+      <End Role="DocGia" EntitySet="DocGias" />
+      <End Role="Muon" EntitySet="Muons" />
+    </AssociationSet>
+    <AssociationSet Name="fkQuaTrinhMuon_DocGia" Association="Self.fkQuaTrinhMuon_DocGia">
+      <End Role="DocGia" EntitySet="DocGias" />
+      <End Role="QuaTrinhMuon" EntitySet="QuaTrinhMuons" />
+    </AssociationSet>
+    <AssociationSet Name="TreEm" Association="Self.TreEm">
+      <End Role="DocGia" EntitySet="DocGias" />
+      <End Role="NguoiLon" EntitySet="NguoiLons" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
